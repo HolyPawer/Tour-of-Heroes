@@ -1,0 +1,11 @@
+<nav>
+  <button (click)="toggle()">Toggle Open/Close</button>
+</nav>
+
+<div [@flyInOut]="isOpen ? 'in' : 'void'" class="open-close-container">
+  <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
+</div>
+
+<div @myInsertRemoveTrigger *ngIf="isOpen" class="insert-remove-container">
+  <p>The box is inserted</p>
+</div>
