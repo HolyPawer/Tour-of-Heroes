@@ -12,6 +12,7 @@ import { HeroService } from '../services/hero.service';
 })
 export class HeroSearchComponent implements OnInit {
   heroes$!: Observable<Hero[]>;
+
   private searchTerms = new Subject<string>();
 
   constructor(private heroService: HeroService) {}
@@ -24,7 +25,7 @@ export class HeroSearchComponent implements OnInit {
     this.heroes$ = this.searchTerms.pipe(
       debounceTime(120),
       distinctUntilChanged(),
-      switchMap((term: string) => this.heroService.searchHeroes(term))
+      switchMap((term: string) => this.heroService.searchHeroes(term)),
     );
   }
 }
